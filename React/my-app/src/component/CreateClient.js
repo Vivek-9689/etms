@@ -66,6 +66,7 @@ const CreateClient = () => {
       body: JSON.stringify(newClient),
     })
       .then((response) => response.json())
+      // eslint-disable-next-line no-unused-vars
       .then((data) => {
       setErr("Client has been Created")
       })

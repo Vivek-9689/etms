@@ -1,12 +1,15 @@
+  // eslint-disable-next-line no-unused-vars
 import React, { useEffect } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import { useLocation, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+  // eslint-disable-next-line no-unused-vars
 import { refreshObj } from './Refreshobj';
 
 
 const ViewQuery = () => {
   const obj = useSelector(state => state.myobj.obj); // Adjust according to your state structure
+    // eslint-disable-next-line no-unused-vars
   const dispatch=useDispatch()
  
  

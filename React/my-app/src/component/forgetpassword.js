@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
+  // eslint-disable-next-line no-unused-vars
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col, Alert, Spinner } from 'react-bootstrap';
 import backgroundImage from './back.jpg';
+  // eslint-disable-next-line no-unused-vars
 import { useDispatch } from 'react-redux';
+  // eslint-disable-next-line no-unused-vars
 import { setclientobj, setobj, setprojobj, setteamobj } from './slicefile';
 
 const ForgetPassword = () => {
     const [username, setUsername] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [err, setErr] = useState('');
+      // eslint-disable-next-line no-unused-vars
     const [sessionerr, setSessionErr] = useState('');
 
     const handleSubmit = async (e) => {

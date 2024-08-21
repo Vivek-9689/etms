@@ -3,7 +3,7 @@ import { Button, Container, Form } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshObj } from './Refreshobj';
-
+  // eslint-disable-next-line no-unused-vars
 const UpdateTaskProgress = ({ taskId, onUpdate }) => {
   const location = useLocation();
   const navigate = useNavigate();

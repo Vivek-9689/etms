@@ -69,6 +69,7 @@ const AssociateQueries = () => {
         body: JSON.stringify(solvobj),
       })
       .then(response => response.json())
+      // eslint-disable-next-line no-unused-vars
       .then(data => {
         // Update the query in the local state to reflect the new status
         setQueries(queries.map(query => 

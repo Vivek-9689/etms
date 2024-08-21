@@ -8,6 +8,7 @@ import { refreshObj } from "./Refreshobj";
 export default function Navb() {
   const obj = useSelector((state) => state.myobj.obj.login);
   const [Name, setUserName] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [err, setErr] = useState('');
   const dispatch = useDispatch();
   

@@ -9,6 +9,7 @@ export default function ViewProject() {
   const [showModal, setShowModal] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedEmployee, setSelectedEmployee] = useState('');
+    // eslint-disable-next-line no-unused-vars
   const [err, setErr] = useState('');
   const [eachProjTeam, setProjTeam] = useState([]);
   const [viewMode, setViewMode] = useState('list'); // New state for controlling the view

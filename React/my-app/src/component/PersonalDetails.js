@@ -4,9 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Container, Row, Col, Table, Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
+  
 const PersonalDetails = () => {
+  
+  // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate();
+    // eslint-disable-next-line no-unused-vars
   const dispatch = useDispatch();
+    // eslint-disable-next-line no-unused-vars
   const teamMembers = useSelector(state => state.myobj.teamobj);
   const obj = useSelector(state => state.myobj.obj);
 

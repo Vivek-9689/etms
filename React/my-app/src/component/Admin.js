@@ -7,6 +7,7 @@ import backgroundImage from './functionality/desktop-wallpaper-administrative-as
 
 const Admin = () => {
   const obj = useSelector((state) => state.myobj.obj);
+  // eslint-disable-next-line no-unused-vars
   const [userRole, setUserRole] = useState(obj.login.role.role1 || '');
 
   const containerStyle = {

@@ -17,6 +17,7 @@ const CreateTeamMember = () => {
     // Fetch employees
     fetch("https://localhost:7018/ETMS/unassignedManager?roleid=4")
       .then(response => response.json())
+        // eslint-disable-next-line no-unused-vars
       .then(data => setEmp(data))
       .catch(error => console.error('Error fetching employees:', error));
   }, [obj]);
