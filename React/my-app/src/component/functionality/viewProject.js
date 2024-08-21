@@ -49,6 +49,7 @@ export default function ViewProject() {
       body: JSON.stringify(assignObj),
     })
       .then((response) => response.text())
+        // eslint-disable-next-line no-unused-vars
       .then((data) => {
         setErr("Assigned");
         setShowModal(false);

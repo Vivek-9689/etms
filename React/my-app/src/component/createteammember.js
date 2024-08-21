@@ -67,6 +67,7 @@ const CreateTeamMember = () => {
       }
       return response.json();
     })
+      // eslint-disable-next-line no-unused-vars
     .then(data => {
       setShowConfirmation(false);
       setSelectedMembers(new Set());

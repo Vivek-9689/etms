@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+  // eslint-disable-next-line no-unused-vars
 import { useDispatch, useSelector } from 'react-redux';
+  // eslint-disable-next-line no-unused-vars
 import { refreshObj } from './Refreshobj';
 
 const CreateQueryPage = () => {
