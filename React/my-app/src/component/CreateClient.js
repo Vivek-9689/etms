@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col, Alert, Modal } from 'react-bootstrap';
 
 import backgroundImage from './back.jpg';
+// eslint-disable-next-line no-unused-vars
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -14,7 +15,7 @@ const CreateClient = () => {
     height: '100vh',
     width: '100%',
   };
-
+// eslint-disable-next-line no-unused-vars
   const [clientId, setClientId] = useState('');
   const [contactNo, setContactNo] = useState('');
   const [emailId, setEmailId] = useState('');

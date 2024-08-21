@@ -1,10 +1,13 @@
 import React from 'react';
+// eslint-disable-next-line no-unused-vars
 import { Button, Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Manager = () => {
+  // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate();
+  // eslint-disable-next-line no-unused-vars
   const obj = useSelector(state => state.myobj.obj);
   const proj = useSelector(state => state.myobj.projobj);
   const clientobj = useSelector(state => state.myobj.clientobj);

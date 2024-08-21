@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col, Alert, Modal } from 'react-bootstrap';
 import backgroundImage from './back.jpg';
 import { useSelector } from 'react-redux';
+// eslint-disable-next-line no-unused-vars
 import { useHistory, useNavigate } from 'react-router-dom';
 
 const CreateProject = () => {
   const obj = useSelector((state) => state.myobj.obj);
   const clientobj = useSelector(state => state.myobj.clientobj);
+  // eslint-disable-next-line no-unused-vars
   const myrole = obj.login.role.role1;
   const navigate=useNavigate()
 
@@ -20,8 +22,10 @@ const CreateProject = () => {
 
   const [projectTitle, setProjectTitle] = useState('');
   const [description, setDescription] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [assignedTo, setAssignedTo] = useState(0);
   const [clientId, setClientId] = useState(0);
+  // eslint-disable-next-line no-unused-vars
   const [createdBy, setCreatedBy] = useState(obj.id); // Default to empid
 
   const formatDateTime = (date) => {
@@ -36,9 +40,11 @@ const CreateProject = () => {
 
     return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
   };
-
+// eslint-disable-next-line no-unused-vars
   const [createdDate, setCreatedDate] = useState(formatDateTime(new Date())); // Default to today with formatted date
+ // eslint-disable-next-line no-unused-vars
   const [status, setStatus] = useState('unassigned');
+// eslint-disable-next-line no-unused-vars
   const [completedDate, setCompletedDate] = useState('');
   const [err, setErr] = useState('');
   const [showModal, setShowModal] = useState(false);
