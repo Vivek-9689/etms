@@ -1,0 +1,89 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: etmsystem
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0'
+
+    - name: Build .NET Backend
+      run: |
+        dotnet restore ./DotNet/EtmsSytem/EtmsSytem.sln
+        dotnet build --configuration Release ./DotNet/EtmsSytem/EtmsSytem.sln /p:NoWarn=CS1591
+        dotnet publish --configuration Release ./DotNet/EtmsSytem/EtmsSytem.sln -o ./publish
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Build Spring Boot API
+      run: mvn -f ./Java/ETMSJava/pom.xml clean install -DskipTests
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+
+    - name: Build React Frontend
+      run: |
+        npm install --legacy-peer-deps
+        npm run build
+      working-directory: ./React/my-app
+
+    - name: Deploy React to S3
+      run: |
+        aws s3 sync ./React/my-app/build s3://etms-react-bucket --delete
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: Asia Pacific (Mumbai) ap-south-1
+
+    - name: Deploy .NET Backend to EC2
+      run: |
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
+        chmod 600 private_key.pem
+        scp -i private_key.pem -r ./publish/* ec2-user@ec2-65-0-71-17.ap-south-1.compute.amazonaws.com:/var/www/dotnet
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy Spring Boot Backend to EC2
+      run: |
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
+        chmod 600 private_key.pem
+        scp -i private_key.pem ./Java/ETMSJava/target/ETMSJava-0.0.1-SNAPSHOT.jar ec2-user@ec2-65-0-71-17.ap-south-1.compute.amazonaws.com:/var/www/springboot
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Clean up SSH key
+      run: rm -f private_key.pem
