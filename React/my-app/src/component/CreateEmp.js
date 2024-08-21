@@ -97,7 +97,7 @@ const CreateEmployee = () => {
       .then((response) => response.text())
       .then((data) => {
         setLoading(false); 
-        if(data!="Employee Has been Created Successfully"){
+        if(data!=="Employee Has been Created Successfully"){
           setErr(data);
         }
          else {

@@ -49,7 +49,7 @@ const ViewTeamMembers = ({ projectId }) => {
     <div className="bg-dark text-white text-center min-vh-100 p-0">
       <Container fluid>
         <div style={{ paddingTop: '90px' }}>
-          <h1>Team Members for Project ID: {projectId!=undefined||projectId!=null?projectId:"No Project Assigned"}</h1>
+          <h1>Team Members for Project ID: {projectId!==undefined||projectId!==null?projectId:"No Project Assigned"}</h1>
           <Row>
             <Col md={10} className="mx-auto text-center" style={{ marginTop: "20px" }}>
               <Form.Control
